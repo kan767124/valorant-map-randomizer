@@ -50,4 +50,46 @@
       { name: "Sunset", img: "https://static.wikia.nocookie.net/valorant/images/7/7c/Sunset_Map.png" },
       { name: "Icebox", img: "https://static.wikia.nocookie.net/valorant/images/0/0b/Icebox_Map.png" },
       { name: "Pearl", img: "https://static.wikia.nocookie.net/valorant/images/4/4f/Pearl_Map.png" },
-      { name: "Fracture", img: "https://static.wikia.nocookie.net/valorant/images
+      { name: "Fracture", img: "https://static.wikia.nocookie.net/valorant/images/3/3c/Fracture_Map.png" },
+      { name: "Breeze", img: "https://static.wikia.nocookie.net/valorant/images/8/8e/Breeze_Map.png" },
+      { name: "Caldor", img: "https://example.com/caldor.png" },
+      { name: "Abyss", img: "https://example.com/abyss.png" }
+    ];
+
+    // チェックボックス生成
+    const mapListDiv = document.getElementById("mapList");
+    maps.forEach((map, index) => {
+      const div = document.createElement("div");
+      div.className = "map-item";
+      div.innerHTML = `
+        <label>
+          <input type="checkbox" id="map${index}" checked>
+          ${map.name}
+        </label>
+      `;
+      mapListDiv.appendChild(div);
+    });
+
+    function pickMap() {
+      const enabledMaps = maps.filter((_, i) => {
+        return document.getElementById(`map${i}`).checked;
+      });
+
+      if (enabledMaps.length === 0) {
+        alert("1つ以上のマップを選択してください");
+        return;
+      }
+
+      const random = Math.floor(Math.random() * enabledMaps.length);
+      const selected = enabledMaps[random];
+
+      document.getElementById("result").textContent = selected.name;
+
+      const img = document.getElementById("mapImage");
+      img.src = selected.img;
+      img.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>

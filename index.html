@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>VALORANT ランダムマップ</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #111;
+      color: #fff;
+      text-align: center;
+    }
+    .map-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .map-item {
+      background: #222;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    img {
+      width: 400px;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>VALORANT ランダムマップ</h1>
+
+  <div class="map-list" id="mapList"></div>
+
+  <button onclick="pickMap()">マップを選ぶ</button>
+
+  <h2 id="result"></h2>
+  <img id="mapImage" style="display:none;">
+
+  <script>
+    const maps = [
+      { name: "Ascent", img: "https://static.wikia.nocookie.net/valorant/images/4/4d/Ascent_Map.png" },
+      { name: "Bind", img: "https://static.wikia.nocookie.net/valorant/images/3/3d/Bind_Map.png" },
+      { name: "Haven", img: "https://static.wikia.nocookie.net/valorant/images/5/5e/Haven_Map.png" },
+      { name: "Split", img: "https://static.wikia.nocookie.net/valorant/images/4/4a/Split_Map.png" },
+      { name: "Lotus", img: "https://static.wikia.nocookie.net/valorant/images/8/8c/Lotus_Map.png" },
+      { name: "Sunset", img: "https://static.wikia.nocookie.net/valorant/images/7/7c/Sunset_Map.png" },
+      { name: "Icebox", img: "https://static.wikia.nocookie.net/valorant/images/0/0b/Icebox_Map.png" },
+      { name: "Pearl", img: "https://static.wikia.nocookie.net/valorant/images/4/4f/Pearl_Map.png" },
+      { name: "Fracture", img: "https://static.wikia.nocookie.net/valorant/images

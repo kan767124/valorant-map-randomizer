@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>VALORANT ランダムマップ</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #111;
+      color: #fff;
+      text-align: center;
+    }
+    .map-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .map-item {
+      background: #222;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    img {
+      width: 400px;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>VALORANT ランダムマップ</h1>
+
+  <div class="map-list" id="mapList"></div>
+
+  <button onclick="pickMap()">マップを選ぶ</button>
+
+  <h2 id="result"></h2>
+  <img id="mapImage" style="display:none;">
+
+  <script>
+    const maps = [
+      { name: "Ascent", img: "https://static.wikia.nocookie.net/valorant/images/4/4d/Ascent_Map.png" },
+      { name: "Bind", img: "https://static.wikia.nocookie.net/valorant/images/3/3d/Bind_Map.png" },
+      { name: "Haven", img: "https://static.wikia.nocookie.net/valorant/images/5/5e/Haven_Map.png" },
+      { name: "Split", img: "https://static.wikia.nocookie.net/valorant/images/4/4a/Split_Map.png" },
+      { name: "Lotus", img: "https://static.wikia.nocookie.net/valorant/images/8/8c/Lotus_Map.png" },
+      { name: "Sunset", img: "https://static.wikia.nocookie.net/valorant/images/7/7c/Sunset_Map.png" },
+      { name: "Icebox", img: "https://static.wikia.nocookie.net/valorant/images/0/0b/Icebox_Map.png" },
+      { name: "Pearl", img: "https://static.wikia.nocookie.net/valorant/images/4/4f/Pearl_Map.png" },
+      { name: "Fracture", img: "https://static.wikia.nocookie.net/valorant/images/3/3c/Fracture_Map.png" },
+      { name: "Breeze", img: "https://static.wikia.nocookie.net/valorant/images/8/8e/Breeze_Map.png" },
+      { name: "Caldor", img: "https://example.com/caldor.png" },  // 差し替え推奨
+      { name: "Abyss", img: "https://example.com/abyss.png" }     // 差し替え推奨
+    ];
+
+    // チェックボックス生成
+    const mapListDiv = document.getElementById("mapList");
+    maps.forEach((map, index) => {
+      const div = document.createElement("div");
+      div.className = "map-item";
+      div.innerHTML = `
+        <label>
+          <input type="checkbox" id="map${index}" checked>
+          ${map.name}
+        </label>
+      `;
+      mapListDiv.appendChild(div);
+    });
+
+    function pickMap() {
+      const enabledMaps = maps.filter((_, i) => {
+        return document.getElementById(`map${i}`).checked;
+      });
+
+      if (enabledMaps.length === 0) {
+        alert("1つ以上のマップを選択してください");
+        return;
+      }
+
+      const random = Math.floor(Math.random() * enabledMaps.length);
+      const selected = enabledMaps[random];
+
+      document.getElementById("result").textContent = selected.name;
+
+      const img = document.getElementById("mapImage");
+      img.src = selected.img;
+      img.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
